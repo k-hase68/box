@@ -1,0 +1,74 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Test006",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/Path001": {
+            "get": {
+
+            },
+            "parameters": [
+                {
+                    "name": "Query001",
+                    "description": "query001",
+                    "in": "query",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "Test001",
+                    "description": "test001",
+                    "in": "header",
+                    "required": false,
+                    "type": "string",
+                    "enum": [
+                    ]
+                }
+            ]
+        }
+    },
+    "definitions": {
+        "email": {
+            "description": "email object",
+            "required": [
+                "type"
+            ],
+            "type": "object",
+            "properties": {
+                "type": {
+                    "description": "",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "",
+                    "type": "string"
+                },
+                "date": {
+                    "format": "date",
+                    "description": "date only",
+                    "maxLength": 30,
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "arrayBin": {
+                    "description": "array binary data",
+                    "type": "array",
+                    "items": {
+                        "format": "binary",
+                        "type": "string"
+                    }
+                },
+                "other": {
+                    "description": "",
+                    "enum": [
+                        "one",
+                        "two"
+                    ],
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
