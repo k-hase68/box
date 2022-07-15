@@ -1,23 +1,23 @@
 ---
 openapi: 3.0.2
 info:
-  title: OP Avatar作成API
+  title: IO Avatar作成API
   version: 1.0.0
-  description: OPがAvatarからdeviceTokenを受信し、accountUniqueを発番して、Avatarサーバに仮登録リクエストとPush通知を依頼するAPIです。
+  description: IOがAvatarからdeviceTokenを受信し、accountUniqueを発番して、Avatarサーバに仮登録リクエストとPush通知を依頼するAPIです。
   license:
     name: ほげ API利用規約
     url: https://www.hoge.com/ec/sitepolicy/index.html
 servers:
-- url: https://opfrontend.apps.cnt3-r45-jyvwjf.hoge-xws.com
+- url: https://iofrontend.apps.cnt3-r45-jyvwjf.hoge-xws.com
   description: 開発環境
-- url: https://opfrontend.apps.cnt4-r67-jyvwjf.hoge-xws.com
+- url: https://iofrontend.apps.cnt4-r67-jyvwjf.hoge-xws.com
   description: 検証環境（社内）
 - url: https://id-staging.hoge.com
   description: 検証環境（インターネット）
   x-environment: ""
   x-upstream: []
 paths:
-  /OP/v1/Account/Create:
+  /io/v1/Account/Create:
     summary: 新規ユーザの作成。
     description: 新規ユーザの作成をする。
     post:
@@ -33,7 +33,7 @@ paths:
                   platform: android
         required: true
       tags:
-      - OP
+      - IO
       responses:
         "201":
           content:
@@ -76,7 +76,7 @@ paths:
                     code: E-000
                     resultset: {}
                     results: []
-          description: "新規ユーザの作成失敗 \n\n エラーがOPサーバに起因する場合に返却"
+          description: "新規ユーザの作成失敗 \n\n エラーがioサーバに起因する場合に返却"
         "503":
           content:
             application/json;charset=utf-8:
@@ -135,9 +135,9 @@ components:
           description: "結果コード \n\n 以下いずれかの値を設定 \n\n 正常実行(S-XXX) \n\n - S-000 正常実行　\
             \n - S-001 該当データなし　\n\n ユーザに起因するエラー(C-XXX) \n\n - C-1XX パラメータエラー  \n -\
             \ C-2XX 業務エラー  \n\n システムに起因するエラー(E-XXX) \n\n - E-000 予期しないエラー \n - E-1XX\
-            \ 内部システムエラー \n - E-2XX 外部システムエラー \n\n /OP/v1/Account/Create が返却する結果コード\
+            \ 内部システムエラー \n - E-2XX 外部システムエラー \n\n /IO/v1/Account/Create が返却する結果コード\
             \ \n - S-000 正常実行 \n - C-101 nullが許容されない呼出パラメータにnullまたは空文字を指定 \n - C-102\
-            \ 呼出パラメータのフォーマットが不正(最小値を下回る、最大値上回る、利用できない文字を指定) \n - E-000 OPサーバで予期しない\
+            \ 呼出パラメータのフォーマットが不正(最小値を下回る、最大値上回る、利用できない文字を指定) \n - E-000 IOサーバで予期しない\
             エラーが発生 \n - E-201 Avatarサービスとの通信でエラーが発生 \n - E-202 Avatarサービスでエラーが発生 \n\
             \ - E-203 RDSでエラーが発生 \n "
           type: string
