@@ -3,7 +3,7 @@
 		"_postman_id": "1f17cb63-5492-45bd-8497-dab5fa4b1464",
 		"name": "Test API",
 		"description": "Description for Test API using Apicurio Studio\n\nContact Support:\n Name: Laurent Broudoux\n Email: laurent.broudoux@gmail.com",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "21990352"
 	},
 	"item": [
@@ -277,15 +277,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{baseUrl}}/order",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"order"
-							]
-						},
+						"url": "{{baseUrl}}/order",
 						"description": "Create (place) a new order"
 					},
 					"response": [
@@ -303,15 +295,7 @@
 										}
 									}
 								},
-								"url": {
-									"raw": "{{baseUrl}}/order",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"order"
-									]
-								}
+								"url": "{{baseUrl}}/order"
 							},
 							"status": "Created",
 							"code": 201,
