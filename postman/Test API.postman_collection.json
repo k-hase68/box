@@ -1,0 +1,340 @@
+{
+	"info": {
+		"_postman_id": "1f17cb63-5492-45bd-8497-dab5fa4b1464",
+		"name": "Test API",
+		"description": "Description for Test API using Apicurio Studio\n\nContact Support:\n Name: Laurent Broudoux\n Email: laurent.broudoux@gmail.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21990352"
+	},
+	"item": [
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Retrieve and existing order using its id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"var expectedId = globals[\"id\"];\r",
+											"tests[\"Check id value\"] = jsonData.id === expectedId;\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/order/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"order",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "ad ullamco dolor",
+											"description": "(Required) Unique identifier of order to retrieve or remove"
+										}
+									]
+								},
+								"description": "Retrieve an existing order using its id"
+							},
+							"response": [
+								{
+									"name": "Order was found and is in response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/order/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"order",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "ad ullamco dolor",
+													"description": "(Required) Unique identifier of order to retrieve or remove"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Delete an existing order using its id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/order/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"order",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "ad ullamco dolor",
+											"description": "(Required) Unique identifier of order to retrieve or remove"
+										}
+									]
+								},
+								"description": "Delete an existing order using its id"
+							},
+							"response": [
+								{
+									"name": "Order was correctly removed",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/order/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"order",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "ad ullamco dolor",
+													"description": "(Required) Unique identifier of order to retrieve or remove"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Retrieve a list of orders",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"var schema = {\r",
+									"    \"type\": \"array\",\r",
+									"    \"items\": {\r",
+									"        \"type\": \"object\",\r",
+									"        \"properties\": {\r",
+									"            \"id\": { \"type\": \"string\" },\r",
+									"            \"status\": { \"type\": \"string\", \"enum\": [globals[\"status\"]] }\r",
+									"        }\r",
+									"    }\r",
+									"};\r",
+									"\r",
+									"tests[\"Valid response\"] = tv4.validate(jsonData, schema);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/order?status=ad ullamco dolor&page=81517345",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"order"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "ad ullamco dolor"
+								},
+								{
+									"key": "page",
+									"value": "81517345"
+								}
+							]
+						},
+						"description": "Retrieve a list of orders"
+					},
+					"response": [
+						{
+							"name": "List of orders was found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/order?status=ad ullamco dolor&page=81517345",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"order"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "ad ullamco dolor"
+										},
+										{
+											"key": "page",
+											"value": "81517345"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Create (place) a new order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "null",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/order",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"order"
+							]
+						},
+						"description": "Create (place) a new order"
+					},
+					"response": [
+						{
+							"name": "Order was correctly created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "null",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/order",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"order"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/",
+			"type": "string"
+		}
+	]
+}
